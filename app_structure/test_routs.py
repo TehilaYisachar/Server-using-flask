@@ -92,7 +92,7 @@ def test_get_message(client):
   assert res.status_code == 200
 
   res = client.get(url + '?sessionId=hhh')
-  assert res.status_code == 400
+  assert res.status_code == 404
 
   res = client.get(url + '?hhhhh=jjj')
   assert res.status_code == 400
@@ -113,7 +113,7 @@ def test_delete_message():
   assert res.status_code == 200
 
   res = client.delete(url + '?sessionId=bbb')
-  assert res.status_code == 400
+  assert res.status_code == 404
 
   res = client.delete(url + '?applicationId=2')
   assert res.status_code == 200

@@ -76,7 +76,7 @@ def get_message():
     if messages_lst.count() != 0:
         return jsonify({'messages' : [message.to_json() for message in messages_lst]})
     
-    return make_response(jsonify({"error": "The Message / Messages do not exist"}), 400)
+    return make_response(jsonify({"error": "The Message / Messages do not exist"}), 404)
 
 
 @main.route('/DeleteMessage', methods=['DELETE'])
@@ -86,7 +86,7 @@ def delete_message():
     messageId = request.args.get('messageId')
 
     if not (messageId or applicationId or sessionId):
-        return make_response(jsonify({"error": "invalid request"}), 400)
+        return make_response(jsonify({"Error": "invalid request"}), 400)
 
     if applicationId:
         messages = Send_message.query.filter_by(application_id=applicationId).all()
@@ -98,7 +98,7 @@ def delete_message():
         messages = Send_message.query.filter_by(message_id=str(messageId)).all()
 
     if len(messages) == 0:
-        return make_response(jsonify({"error": "The Message / Messages do not exist"}), 400)
+        return make_response(jsonify({"Error": "The Message / Messages do not exist"}), 404)
         
     for send_message in messages:
         message = Message.query.filter_by(id=send_message.message_id).first()
