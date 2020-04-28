@@ -1,4 +1,4 @@
-# Server-using-flask
+# Python server using flask
 
 ## Table of contents
 * [General info](#general-info)
