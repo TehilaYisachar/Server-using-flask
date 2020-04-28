@@ -7,6 +7,7 @@
 
 ## General info
  Python server using flask and pytest for testing the api. The server using sqlite database to store the data.
+ 
  Lets you manage adding a message to the database, receiving a message/ messages, and deleting a message/ messages.
 
 ## Technologies
